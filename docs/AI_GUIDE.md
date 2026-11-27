@@ -14,7 +14,6 @@
 
 - 字段的规范性定义：[PROJECT_FORMAT.md](PROJECT_FORMAT.md)
 - 人类使用说明：[USER_GUIDE.md](USER_GUIDE.md)
-- 可直接导入的完整示例：[formula.project.json](examples/formula.project.json)、[collection.project.json](examples/collection.project.json)、[bishop-6min-graph.project.json](examples/bishop-6min-graph.project.json)（分步计算图的读法见 [bishop-6min-graph.md](examples/bishop-6min-graph.md)）
 
 ---
 

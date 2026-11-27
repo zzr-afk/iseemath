@@ -23,22 +23,6 @@ describe('docs/examples', () => {
     expect(result.values.var_damage).toBeCloseTo(170, 10);
   });
 
-  it('bishop 6-minute graph example evaluates to the report totals without Commandment', () => {
-    const envelope = loadExample('bishop-6min-graph.project.json') as { project?: unknown };
-    const project = parseProject(envelope.project);
-    expect(validateProject(project)).toEqual([]);
-
-    const result = evaluateProject(project);
-    expect(result.errors).toEqual({});
-    expect(result.values.f_t1).toBeCloseTo(130.526073, 5);
-    expect(result.values.f_t7).toBeCloseTo(50.401336, 5);
-    expect(result.values.f_ar_line_t7).toBeCloseTo(141309217.95, 0);
-    expect(result.values.f_aj_line_t7).toBeCloseTo(342096044.6, 0);
-    expect(result.values.f_total).toBeCloseTo(5197610161788.648, 2);
-    expect(result.values.f_dps).toBeCloseTo(14437806004.9685, 3);
-    expect(result.values.f_share_ar_total).toBeCloseTo(0.715577, 5);
-  });
-
   it('collection example passes schema and invariants, with resolvable fields', () => {
     const envelope = loadExample('collection.project.json') as { project?: unknown };
     const project = parseProject(envelope.project);

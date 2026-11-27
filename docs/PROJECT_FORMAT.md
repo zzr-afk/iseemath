@@ -689,7 +689,6 @@ a * b
 
 - [formula.project.json](examples/formula.project.json) — 分组、三个常量、一个公式、影响边、折叠包；
 - [collection.project.json](examples/collection.project.json) — 数据集元数据、输入字段映射、派生列、全局常量引用；
-- [bishop-6min-graph.project.json](examples/bishop-6min-graph.project.json) — 81 个节点的分步计算图：输入折叠包、7 个时间段乘区、14 个技能（局部量 `段1系数…`）、HEXA 天使之箭的单段/特效口径、汇总与占比；读法见 [bishop-6min-graph.md](examples/bishop-6min-graph.md)。
 
 最小项目骨架：
 
