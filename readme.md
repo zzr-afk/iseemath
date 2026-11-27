@@ -74,3 +74,12 @@ React 18 + TypeScript + Vite 6；Ant Design 5 + CSS Modules；React Flow 12；Zu
 导入方式：顶栏「项目」→「导入」，选择项目 JSON。
 
 新增的「数据列表」页签提供：左侧变量列表，右侧显示该量的上下游局域关系图；画布工具栏的「整理」按钮可按依赖层级自动排列节点。
+
+## 在线界面
+
+GitHub Pages 部署后入口：
+
+https://zzr-afk.github.io/iseemath/
+
+首次部署需要在仓库 `Settings → Pages → Build and deployment → Source` 选择 **GitHub Actions**，
+之后推送到 `main` 会自动构建并发布 `dist`。
