@@ -1,0 +1,1674 @@
+{
+  "format": "numlab",
+  "schemaVersion": 1,
+  "appVersion": "0.1.0",
+  "exportedAt": 1764200000000,
+  "project": {
+    "schemaVersion": 1,
+    "id": "proj_date_balance_v0",
+    "name": "date 当前平衡推演",
+    "description": "基于当前 date 数值推导；使用 iseemath 求值。",
+    "nodes": {
+      "grp_base": {
+        "id": "grp_base",
+        "kind": "group",
+        "name": "基准",
+        "label": "日期基准",
+        "tags": [],
+        "parentId": null,
+        "position": {
+          "x": -360,
+          "y": 40
+        },
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "grp_combat": {
+        "id": "grp_combat",
+        "kind": "group",
+        "name": "战斗",
+        "label": "标准人对打",
+        "tags": [],
+        "parentId": null,
+        "position": {
+          "x": -360,
+          "y": 158
+        },
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "grp_econ": {
+        "id": "grp_econ",
+        "kind": "group",
+        "name": "经济",
+        "label": "线上与击杀",
+        "tags": [],
+        "parentId": null,
+        "position": {
+          "x": -360,
+          "y": 276
+        },
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "grp_equip": {
+        "id": "grp_equip",
+        "kind": "group",
+        "name": "装备",
+        "label": "价格与效率",
+        "tags": [],
+        "parentId": null,
+        "position": {
+          "x": -360,
+          "y": 394
+        },
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "grp_pace": {
+        "id": "grp_pace",
+        "kind": "group",
+        "name": "节奏",
+        "label": "升级与移动",
+        "tags": [],
+        "parentId": null,
+        "position": {
+          "x": -360,
+          "y": 512
+        },
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_小兵生命": {
+        "id": "var_小兵生命",
+        "kind": "variable",
+        "variableKind": "constant",
+        "role": "input",
+        "name": "小兵生命",
+        "label": "小兵生命",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_base",
+        "position": {
+          "x": 40,
+          "y": 330.0
+        },
+        "unit": "点",
+        "precision": 2,
+        "value": 20,
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_小兵攻击": {
+        "id": "var_小兵攻击",
+        "kind": "variable",
+        "variableKind": "constant",
+        "role": "input",
+        "name": "小兵攻击",
+        "label": "小兵攻击",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_base",
+        "position": {
+          "x": 40,
+          "y": 198.0
+        },
+        "unit": "点",
+        "precision": 2,
+        "value": 10,
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_小兵经验": {
+        "id": "var_小兵经验",
+        "kind": "variable",
+        "variableKind": "constant",
+        "role": "input",
+        "name": "小兵经验",
+        "label": "小兵经验",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_base",
+        "position": {
+          "x": 40,
+          "y": 462.0
+        },
+        "unit": "经验",
+        "precision": 2,
+        "value": 6,
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_每波小兵": {
+        "id": "var_每波小兵",
+        "kind": "variable",
+        "variableKind": "constant",
+        "role": "input",
+        "name": "每波小兵",
+        "label": "每波小兵",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_base",
+        "position": {
+          "x": 40,
+          "y": 1122.0
+        },
+        "unit": "个",
+        "precision": 2,
+        "value": 4,
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_兵波间隔": {
+        "id": "var_兵波间隔",
+        "kind": "variable",
+        "variableKind": "constant",
+        "role": "input",
+        "name": "兵波间隔",
+        "label": "兵波间隔",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_base",
+        "position": {
+          "x": 40,
+          "y": -1122.0
+        },
+        "unit": "回合",
+        "precision": 2,
+        "value": 3,
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_标准局回合": {
+        "id": "var_标准局回合",
+        "kind": "variable",
+        "variableKind": "constant",
+        "role": "input",
+        "name": "标准局回合",
+        "label": "标准局回合",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_base",
+        "position": {
+          "x": 40,
+          "y": 726.0
+        },
+        "unit": "回合",
+        "precision": 2,
+        "value": 55,
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_基础生命": {
+        "id": "var_基础生命",
+        "kind": "variable",
+        "variableKind": "constant",
+        "role": "input",
+        "name": "基础生命",
+        "label": "基础生命",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_base",
+        "position": {
+          "x": 40,
+          "y": -198.0
+        },
+        "unit": "点",
+        "precision": 2,
+        "value": 180,
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_基础攻击": {
+        "id": "var_基础攻击",
+        "kind": "variable",
+        "variableKind": "constant",
+        "role": "input",
+        "name": "基础攻击",
+        "label": "基础攻击",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_base",
+        "position": {
+          "x": 40,
+          "y": -330.0
+        },
+        "unit": "点",
+        "precision": 2,
+        "value": 12,
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_基础防御": {
+        "id": "var_基础防御",
+        "kind": "variable",
+        "variableKind": "constant",
+        "role": "input",
+        "name": "基础防御",
+        "label": "基础防御",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_base",
+        "position": {
+          "x": 40,
+          "y": 66.0
+        },
+        "unit": "点",
+        "precision": 2,
+        "value": 2,
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_基础速度": {
+        "id": "var_基础速度",
+        "kind": "variable",
+        "variableKind": "constant",
+        "role": "input",
+        "name": "基础速度",
+        "label": "基础速度",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_base",
+        "position": {
+          "x": 40,
+          "y": -66.0
+        },
+        "unit": "速度",
+        "precision": 2,
+        "value": 6,
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_每级生命": {
+        "id": "var_每级生命",
+        "kind": "variable",
+        "variableKind": "constant",
+        "role": "input",
+        "name": "每级生命",
+        "label": "每级生命",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_base",
+        "position": {
+          "x": 40,
+          "y": 1386.0
+        },
+        "unit": "点",
+        "precision": 2,
+        "value": 6,
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_每级魔法": {
+        "id": "var_每级魔法",
+        "kind": "variable",
+        "variableKind": "constant",
+        "role": "input",
+        "name": "每级魔法",
+        "label": "每级魔法",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_base",
+        "position": {
+          "x": 40,
+          "y": 1518.0
+        },
+        "unit": "点",
+        "precision": 2,
+        "value": 1,
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_每三级攻击": {
+        "id": "var_每三级攻击",
+        "kind": "variable",
+        "variableKind": "constant",
+        "role": "input",
+        "name": "每三级攻击",
+        "label": "每三级攻击",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_base",
+        "position": {
+          "x": 40,
+          "y": 858.0
+        },
+        "unit": "点",
+        "precision": 2,
+        "value": 1,
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_每六级防御": {
+        "id": "var_每六级防御",
+        "kind": "variable",
+        "variableKind": "constant",
+        "role": "input",
+        "name": "每六级防御",
+        "label": "每六级防御",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_base",
+        "position": {
+          "x": 40,
+          "y": 990.0
+        },
+        "unit": "点",
+        "precision": 2,
+        "value": 1,
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_突破生命": {
+        "id": "var_突破生命",
+        "kind": "variable",
+        "variableKind": "constant",
+        "role": "input",
+        "name": "突破生命",
+        "label": "突破生命",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_base",
+        "position": {
+          "x": 40,
+          "y": 1914.0
+        },
+        "unit": "点",
+        "precision": 2,
+        "value": 18,
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_突破攻击": {
+        "id": "var_突破攻击",
+        "kind": "variable",
+        "variableKind": "constant",
+        "role": "input",
+        "name": "突破攻击",
+        "label": "突破攻击",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_base",
+        "position": {
+          "x": 40,
+          "y": 1782.0
+        },
+        "unit": "点",
+        "precision": 2,
+        "value": 2,
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_突破防御": {
+        "id": "var_突破防御",
+        "kind": "variable",
+        "variableKind": "constant",
+        "role": "input",
+        "name": "突破防御",
+        "label": "突破防御",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_base",
+        "position": {
+          "x": 40,
+          "y": 2046.0
+        },
+        "unit": "点",
+        "precision": 2,
+        "value": 1,
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_二档攻击": {
+        "id": "var_二档攻击",
+        "kind": "variable",
+        "variableKind": "constant",
+        "role": "input",
+        "name": "二档攻击",
+        "label": "二档攻击",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_equip",
+        "position": {
+          "x": 40,
+          "y": -1782.0
+        },
+        "unit": "点",
+        "precision": 2,
+        "value": 3,
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_三档攻击": {
+        "id": "var_三档攻击",
+        "kind": "variable",
+        "variableKind": "constant",
+        "role": "input",
+        "name": "三档攻击",
+        "label": "三档攻击",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_equip",
+        "position": {
+          "x": 40,
+          "y": -2310.0
+        },
+        "unit": "点",
+        "precision": 2,
+        "value": 5,
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_二档生命": {
+        "id": "var_二档生命",
+        "kind": "variable",
+        "variableKind": "constant",
+        "role": "input",
+        "name": "二档生命",
+        "label": "二档生命",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_equip",
+        "position": {
+          "x": 40,
+          "y": -1650.0
+        },
+        "unit": "点",
+        "precision": 2,
+        "value": 30,
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_三档生命": {
+        "id": "var_三档生命",
+        "kind": "variable",
+        "variableKind": "constant",
+        "role": "input",
+        "name": "三档生命",
+        "label": "三档生命",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_equip",
+        "position": {
+          "x": 40,
+          "y": -2178.0
+        },
+        "unit": "点",
+        "precision": 2,
+        "value": 50,
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_二档防御": {
+        "id": "var_二档防御",
+        "kind": "variable",
+        "variableKind": "constant",
+        "role": "input",
+        "name": "二档防御",
+        "label": "二档防御",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_equip",
+        "position": {
+          "x": 40,
+          "y": -1518.0
+        },
+        "unit": "点",
+        "precision": 2,
+        "value": 2,
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_三档防御": {
+        "id": "var_三档防御",
+        "kind": "variable",
+        "variableKind": "constant",
+        "role": "input",
+        "name": "三档防御",
+        "label": "三档防御",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_equip",
+        "position": {
+          "x": 40,
+          "y": -2046.0
+        },
+        "unit": "点",
+        "precision": 2,
+        "value": 3,
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_线上获取率": {
+        "id": "var_线上获取率",
+        "kind": "variable",
+        "variableKind": "constant",
+        "role": "input",
+        "name": "线上获取率",
+        "label": "线上获取率",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_econ",
+        "position": {
+          "x": 40,
+          "y": 2178.0
+        },
+        "unit": "比例",
+        "precision": 2,
+        "value": 0.6,
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_每波金币": {
+        "id": "var_每波金币",
+        "kind": "variable",
+        "variableKind": "constant",
+        "role": "input",
+        "name": "每波金币",
+        "label": "每波金币",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_econ",
+        "position": {
+          "x": 40,
+          "y": 1254.0
+        },
+        "unit": "金币",
+        "precision": 2,
+        "value": 80,
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_开局经济": {
+        "id": "var_开局经济",
+        "kind": "variable",
+        "variableKind": "constant",
+        "role": "input",
+        "name": "开局经济",
+        "label": "开局经济",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_econ",
+        "position": {
+          "x": 40,
+          "y": 594.0
+        },
+        "unit": "金币",
+        "precision": 2,
+        "value": 100,
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_一档价格": {
+        "id": "var_一档价格",
+        "kind": "variable",
+        "variableKind": "constant",
+        "role": "input",
+        "name": "一档价格",
+        "label": "一档价格",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_equip",
+        "position": {
+          "x": 40,
+          "y": -2574.0
+        },
+        "unit": "金币",
+        "precision": 2,
+        "value": 50,
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_二档价格": {
+        "id": "var_二档价格",
+        "kind": "variable",
+        "variableKind": "constant",
+        "role": "input",
+        "name": "二档价格",
+        "label": "二档价格",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_equip",
+        "position": {
+          "x": 40,
+          "y": -1914.0
+        },
+        "unit": "金币",
+        "precision": 2,
+        "value": 100,
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_三档价格": {
+        "id": "var_三档价格",
+        "kind": "variable",
+        "variableKind": "constant",
+        "role": "input",
+        "name": "三档价格",
+        "label": "三档价格",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_equip",
+        "position": {
+          "x": 40,
+          "y": -2442.0
+        },
+        "unit": "金币",
+        "precision": 2,
+        "value": 200,
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_装备格": {
+        "id": "var_装备格",
+        "kind": "variable",
+        "variableKind": "constant",
+        "role": "input",
+        "name": "装备格",
+        "label": "装备格",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_equip",
+        "position": {
+          "x": 40,
+          "y": 2310.0
+        },
+        "unit": "格",
+        "precision": 2,
+        "value": 4,
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_团队总经验": {
+        "id": "var_团队总经验",
+        "kind": "variable",
+        "variableKind": "constant",
+        "role": "input",
+        "name": "团队总经验",
+        "label": "团队总经验",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_pace",
+        "position": {
+          "x": 40,
+          "y": -462.0
+        },
+        "unit": "经验",
+        "precision": 2,
+        "value": 1200,
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_野怪经验": {
+        "id": "var_野怪经验",
+        "kind": "variable",
+        "variableKind": "constant",
+        "role": "input",
+        "name": "野怪经验",
+        "label": "野怪经验",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_pace",
+        "position": {
+          "x": 40,
+          "y": 2838.0
+        },
+        "unit": "经验",
+        "precision": 2,
+        "value": 16,
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_预期每回合经验": {
+        "id": "var_预期每回合经验",
+        "kind": "variable",
+        "variableKind": "constant",
+        "role": "input",
+        "name": "预期每回合经验",
+        "label": "预期每回合经验",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_pace",
+        "position": {
+          "x": 40,
+          "y": 2970.0
+        },
+        "unit": "经验/回合",
+        "precision": 2,
+        "value": 7,
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_六级累计": {
+        "id": "var_六级累计",
+        "kind": "variable",
+        "variableKind": "constant",
+        "role": "input",
+        "name": "六级累计",
+        "label": "六级累计",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_pace",
+        "position": {
+          "x": 40,
+          "y": -1254.0
+        },
+        "unit": "经验",
+        "precision": 2,
+        "value": 150,
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_十级累计": {
+        "id": "var_十级累计",
+        "kind": "variable",
+        "variableKind": "constant",
+        "role": "input",
+        "name": "十级累计",
+        "label": "十级累计",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_pace",
+        "position": {
+          "x": 40,
+          "y": -594.0
+        },
+        "unit": "经验",
+        "precision": 2,
+        "value": 360,
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_六级升级阈值": {
+        "id": "var_六级升级阈值",
+        "kind": "variable",
+        "variableKind": "constant",
+        "role": "input",
+        "name": "六级升级阈值",
+        "label": "六级升级阈值",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_pace",
+        "position": {
+          "x": 40,
+          "y": -1386.0
+        },
+        "unit": "经验",
+        "precision": 2,
+        "value": 45,
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_六级生命": {
+        "id": "var_六级生命",
+        "kind": "variable",
+        "variableKind": "formula",
+        "role": "intermediate",
+        "name": "六级生命",
+        "label": "6级生命",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_combat",
+        "position": {
+          "x": 340,
+          "y": 0.0
+        },
+        "unit": "点",
+        "precision": 2,
+        "formula": "基础生命 + 每级生命*5 + 突破生命*2",
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_六级攻击": {
+        "id": "var_六级攻击",
+        "kind": "variable",
+        "variableKind": "formula",
+        "role": "intermediate",
+        "name": "六级攻击",
+        "label": "6级攻击",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_combat",
+        "position": {
+          "x": 340,
+          "y": -132.0
+        },
+        "unit": "点",
+        "precision": 2,
+        "formula": "基础攻击 + floor(6/3)*每三级攻击 + 突破攻击*2",
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_六级防御": {
+        "id": "var_六级防御",
+        "kind": "variable",
+        "variableKind": "formula",
+        "role": "intermediate",
+        "name": "六级防御",
+        "label": "6级防御",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_combat",
+        "position": {
+          "x": 340,
+          "y": 132.0
+        },
+        "unit": "点",
+        "precision": 2,
+        "formula": "基础防御 + floor(6/6)*每六级防御 + 突破防御*2",
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_十级生命": {
+        "id": "var_十级生命",
+        "kind": "variable",
+        "variableKind": "formula",
+        "role": "intermediate",
+        "name": "十级生命",
+        "label": "10级生命",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_combat",
+        "position": {
+          "x": 340,
+          "y": -1056.0
+        },
+        "unit": "点",
+        "precision": 2,
+        "formula": "基础生命 + 每级生命*9 + 突破生命*3",
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_十级攻击": {
+        "id": "var_十级攻击",
+        "kind": "variable",
+        "variableKind": "formula",
+        "role": "intermediate",
+        "name": "十级攻击",
+        "label": "10级攻击",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_combat",
+        "position": {
+          "x": 340,
+          "y": -1188.0
+        },
+        "unit": "点",
+        "precision": 2,
+        "formula": "基础攻击 + floor(10/3)*每三级攻击 + 突破攻击*3",
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_十级防御": {
+        "id": "var_十级防御",
+        "kind": "variable",
+        "variableKind": "formula",
+        "role": "intermediate",
+        "name": "十级防御",
+        "label": "10级防御",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_combat",
+        "position": {
+          "x": 340,
+          "y": -924.0
+        },
+        "unit": "点",
+        "precision": 2,
+        "formula": "基础防御 + floor(10/6)*每六级防御 + 突破防御*3",
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_一级无装TTK": {
+        "id": "var_一级无装TTK",
+        "kind": "variable",
+        "variableKind": "formula",
+        "role": "output",
+        "name": "一级无装TTK",
+        "label": "1级无装TTK",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_combat",
+        "position": {
+          "x": 340,
+          "y": -660.0
+        },
+        "unit": "次",
+        "precision": 2,
+        "formula": "ceil(基础生命/max(1,基础攻击-基础防御))",
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_六级无装TTK": {
+        "id": "var_六级无装TTK",
+        "kind": "variable",
+        "variableKind": "formula",
+        "role": "output",
+        "name": "六级无装TTK",
+        "label": "6级无装TTK",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_combat",
+        "position": {
+          "x": 640,
+          "y": 330.0
+        },
+        "unit": "次",
+        "precision": 2,
+        "formula": "ceil(六级生命/max(1,六级攻击-六级防御))",
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_六级二档攻击TTK": {
+        "id": "var_六级二档攻击TTK",
+        "kind": "variable",
+        "variableKind": "formula",
+        "role": "output",
+        "name": "六级二档攻击TTK",
+        "label": "6级二档攻击TTK",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_combat",
+        "position": {
+          "x": 640,
+          "y": -66.0
+        },
+        "unit": "次",
+        "precision": 2,
+        "formula": "ceil(六级生命/max(1,六级攻击+二档攻击-六级防御))",
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_六级二档生命TTK": {
+        "id": "var_六级二档生命TTK",
+        "kind": "variable",
+        "variableKind": "formula",
+        "role": "output",
+        "name": "六级二档生命TTK",
+        "label": "6级二档生命TTK",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_combat",
+        "position": {
+          "x": 640,
+          "y": 66.0
+        },
+        "unit": "次",
+        "precision": 2,
+        "formula": "ceil((六级生命+二档生命)/max(1,六级攻击-六级防御))",
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_六级二档防御TTK": {
+        "id": "var_六级二档防御TTK",
+        "kind": "variable",
+        "variableKind": "formula",
+        "role": "output",
+        "name": "六级二档防御TTK",
+        "label": "6级二档防御TTK",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_combat",
+        "position": {
+          "x": 640,
+          "y": 198.0
+        },
+        "unit": "次",
+        "precision": 2,
+        "formula": "ceil(六级生命/max(1,六级攻击-(六级防御+二档防御)))",
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_十级无装TTK": {
+        "id": "var_十级无装TTK",
+        "kind": "variable",
+        "variableKind": "formula",
+        "role": "output",
+        "name": "十级无装TTK",
+        "label": "10级无装TTK",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_combat",
+        "position": {
+          "x": 640,
+          "y": -198.0
+        },
+        "unit": "次",
+        "precision": 2,
+        "formula": "ceil(十级生命/max(1,十级攻击-十级防御))",
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_十级三档攻击TTK": {
+        "id": "var_十级三档攻击TTK",
+        "kind": "variable",
+        "variableKind": "formula",
+        "role": "output",
+        "name": "十级三档攻击TTK",
+        "label": "10级三档攻击TTK",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_combat",
+        "position": {
+          "x": 640,
+          "y": -594.0
+        },
+        "unit": "次",
+        "precision": 2,
+        "formula": "ceil(十级生命/max(1,十级攻击+三档攻击-十级防御))",
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_十级三档生命TTK": {
+        "id": "var_十级三档生命TTK",
+        "kind": "variable",
+        "variableKind": "formula",
+        "role": "output",
+        "name": "十级三档生命TTK",
+        "label": "10级三档生命TTK",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_combat",
+        "position": {
+          "x": 640,
+          "y": -462.0
+        },
+        "unit": "次",
+        "precision": 2,
+        "formula": "ceil((十级生命+三档生命)/max(1,十级攻击-十级防御))",
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_十级三档防御TTK": {
+        "id": "var_十级三档防御TTK",
+        "kind": "variable",
+        "variableKind": "formula",
+        "role": "output",
+        "name": "十级三档防御TTK",
+        "label": "10级三档防御TTK",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_combat",
+        "position": {
+          "x": 640,
+          "y": -330.0
+        },
+        "unit": "次",
+        "precision": 2,
+        "formula": "ceil(十级生命/max(1,十级攻击-(十级防御+三档防御)))",
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_线上每回合金币": {
+        "id": "var_线上每回合金币",
+        "kind": "variable",
+        "variableKind": "formula",
+        "role": "output",
+        "name": "线上每回合金币",
+        "label": "线上每回合金币",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_econ",
+        "position": {
+          "x": 340,
+          "y": 1320.0
+        },
+        "unit": "金币",
+        "precision": 2,
+        "formula": "每波金币/兵波间隔*线上获取率",
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_五十五回合线上金币": {
+        "id": "var_五十五回合线上金币",
+        "kind": "variable",
+        "variableKind": "formula",
+        "role": "output",
+        "name": "五十五回合线上金币",
+        "label": "五十五回合线上金币",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_econ",
+        "position": {
+          "x": 640,
+          "y": 462.0
+        },
+        "unit": "金币",
+        "precision": 2,
+        "formula": "线上每回合金币*标准局回合",
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_加开局总金币": {
+        "id": "var_加开局总金币",
+        "kind": "variable",
+        "variableKind": "formula",
+        "role": "output",
+        "name": "加开局总金币",
+        "label": "加开局总金币",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_econ",
+        "position": {
+          "x": 940,
+          "y": 0.0
+        },
+        "unit": "金币",
+        "precision": 2,
+        "formula": "五十五回合线上金币+开局经济",
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_四件三档价格": {
+        "id": "var_四件三档价格",
+        "kind": "variable",
+        "variableKind": "formula",
+        "role": "output",
+        "name": "四件三档价格",
+        "label": "四件三档价格",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_equip",
+        "position": {
+          "x": 340,
+          "y": 1188.0
+        },
+        "unit": "金币",
+        "precision": 2,
+        "formula": "三档价格*装备格",
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_满装后余额": {
+        "id": "var_满装后余额",
+        "kind": "variable",
+        "variableKind": "formula",
+        "role": "output",
+        "name": "满装后余额",
+        "label": "满装后余额",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_econ",
+        "position": {
+          "x": 1240,
+          "y": 0.0
+        },
+        "unit": "金币",
+        "precision": 2,
+        "formula": "加开局总金币-四件三档价格",
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_击杀金币六级": {
+        "id": "var_击杀金币六级",
+        "kind": "variable",
+        "variableKind": "formula",
+        "role": "output",
+        "name": "击杀金币六级",
+        "label": "击杀金币6级",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_econ",
+        "position": {
+          "x": 40,
+          "y": -726.0
+        },
+        "unit": "金币",
+        "precision": 2,
+        "formula": "clamp(100+10*6+20*(6-6),50,300)",
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_击杀经验六级": {
+        "id": "var_击杀经验六级",
+        "kind": "variable",
+        "variableKind": "formula",
+        "role": "output",
+        "name": "击杀经验六级",
+        "label": "击杀经验6级",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_econ",
+        "position": {
+          "x": 40,
+          "y": -990.0
+        },
+        "unit": "经验",
+        "precision": 2,
+        "formula": "clamp(20+10*6+10*(6-6),10,160)",
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_击杀经验占六级升级": {
+        "id": "var_击杀经验占六级升级",
+        "kind": "variable",
+        "variableKind": "formula",
+        "role": "output",
+        "name": "击杀经验占六级升级",
+        "label": "击杀经验占6级升级",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_pace",
+        "position": {
+          "x": 340,
+          "y": 924.0
+        },
+        "unit": "比例",
+        "precision": 2,
+        "formula": "击杀经验六级/六级升级阈值",
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_击杀金币折波数": {
+        "id": "var_击杀金币折波数",
+        "kind": "variable",
+        "variableKind": "formula",
+        "role": "output",
+        "name": "击杀金币折波数",
+        "label": "击杀金币折波数",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_econ",
+        "position": {
+          "x": 340,
+          "y": 1056.0
+        },
+        "unit": "波",
+        "precision": 2,
+        "formula": "击杀金币六级/(每波金币*线上获取率)",
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_六级回合": {
+        "id": "var_六级回合",
+        "kind": "variable",
+        "variableKind": "formula",
+        "role": "output",
+        "name": "六级回合",
+        "label": "6级预期回合",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_pace",
+        "position": {
+          "x": 340,
+          "y": 264.0
+        },
+        "unit": "回合",
+        "precision": 2,
+        "formula": "ceil(六级累计/预期每回合经验)",
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_十级回合": {
+        "id": "var_十级回合",
+        "kind": "variable",
+        "variableKind": "formula",
+        "role": "output",
+        "name": "十级回合",
+        "label": "10级预期回合",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_pace",
+        "position": {
+          "x": 340,
+          "y": -792.0
+        },
+        "unit": "回合",
+        "precision": 2,
+        "formula": "ceil(十级累计/预期每回合经验)",
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_每格AP速度6": {
+        "id": "var_每格AP速度6",
+        "kind": "variable",
+        "variableKind": "formula",
+        "role": "output",
+        "name": "每格AP速度6",
+        "label": "速度6每格AP",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_pace",
+        "position": {
+          "x": 40,
+          "y": 2574.0
+        },
+        "unit": "AP",
+        "precision": 2,
+        "formula": "ceil(180/6)",
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_每格AP速度8": {
+        "id": "var_每格AP速度8",
+        "kind": "variable",
+        "variableKind": "formula",
+        "role": "output",
+        "name": "每格AP速度8",
+        "label": "速度8每格AP",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_pace",
+        "position": {
+          "x": 40,
+          "y": 2706.0
+        },
+        "unit": "AP",
+        "precision": 2,
+        "formula": "ceil(180/8)",
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_每格AP速度10": {
+        "id": "var_每格AP速度10",
+        "kind": "variable",
+        "variableKind": "formula",
+        "role": "output",
+        "name": "每格AP速度10",
+        "label": "速度10每格AP",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_pace",
+        "position": {
+          "x": 40,
+          "y": 2442.0
+        },
+        "unit": "AP",
+        "precision": 2,
+        "formula": "ceil(180/10)",
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_一百AP速度6格数": {
+        "id": "var_一百AP速度6格数",
+        "kind": "variable",
+        "variableKind": "formula",
+        "role": "output",
+        "name": "一百AP速度6格数",
+        "label": "100AP速度6最大格",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_pace",
+        "position": {
+          "x": 340,
+          "y": -1320.0
+        },
+        "unit": "格",
+        "precision": 2,
+        "formula": "floor(100/每格AP速度6)",
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_一档攻击每金币": {
+        "id": "var_一档攻击每金币",
+        "kind": "variable",
+        "variableKind": "formula",
+        "role": "output",
+        "name": "一档攻击每金币",
+        "label": "一档攻击每金币",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_equip",
+        "position": {
+          "x": 340,
+          "y": 396.0
+        },
+        "unit": "攻击/金币",
+        "precision": 2,
+        "formula": "2/一档价格",
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_二档攻击每金币": {
+        "id": "var_二档攻击每金币",
+        "kind": "variable",
+        "variableKind": "formula",
+        "role": "output",
+        "name": "二档攻击每金币",
+        "label": "二档攻击每金币",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_equip",
+        "position": {
+          "x": 340,
+          "y": 660.0
+        },
+        "unit": "攻击/金币",
+        "precision": 2,
+        "formula": "二档攻击/二档价格",
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_三档攻击每金币": {
+        "id": "var_三档攻击每金币",
+        "kind": "variable",
+        "variableKind": "formula",
+        "role": "output",
+        "name": "三档攻击每金币",
+        "label": "三档攻击每金币",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_equip",
+        "position": {
+          "x": 340,
+          "y": 528.0
+        },
+        "unit": "攻击/金币",
+        "precision": 2,
+        "formula": "三档攻击/三档价格",
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_击杀经验分配人数": {
+        "id": "var_击杀经验分配人数",
+        "kind": "variable",
+        "variableKind": "constant",
+        "role": "input",
+        "name": "击杀经验分配人数",
+        "label": "击杀经验分配人数",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_pace",
+        "position": {
+          "x": 40,
+          "y": -858.0
+        },
+        "unit": "人",
+        "precision": 2,
+        "value": 3,
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_击杀经验个人六级": {
+        "id": "var_击杀经验个人六级",
+        "kind": "variable",
+        "variableKind": "formula",
+        "role": "output",
+        "name": "击杀经验个人六级",
+        "label": "击杀经验个人6级",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_pace",
+        "position": {
+          "x": 340,
+          "y": 792.0
+        },
+        "unit": "经验",
+        "precision": 2,
+        "formula": "击杀经验六级/击杀经验分配人数",
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_击杀经验个人占六级升级": {
+        "id": "var_击杀经验个人占六级升级",
+        "kind": "variable",
+        "variableKind": "formula",
+        "role": "output",
+        "name": "击杀经验个人占六级升级",
+        "label": "击杀经验个人占6级升级",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_pace",
+        "position": {
+          "x": 640,
+          "y": 594.0
+        },
+        "unit": "比例",
+        "precision": 2,
+        "formula": "击杀经验个人六级/六级升级阈值",
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_四短刃攻击": {
+        "id": "var_四短刃攻击",
+        "kind": "variable",
+        "variableKind": "formula",
+        "role": "intermediate",
+        "name": "四短刃攻击",
+        "label": "4短刃攻击",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_equip",
+        "position": {
+          "x": 40,
+          "y": -2706.0
+        },
+        "unit": "点",
+        "precision": 2,
+        "formula": "4*2",
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_四短刃TTK": {
+        "id": "var_四短刃TTK",
+        "kind": "variable",
+        "variableKind": "formula",
+        "role": "output",
+        "name": "四短刃TTK",
+        "label": "4短刃TTK",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_equip",
+        "position": {
+          "x": 340,
+          "y": -264.0
+        },
+        "unit": "次",
+        "precision": 2,
+        "formula": "ceil(180/max(1,12+四短刃攻击-2))",
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_破军一级TTK": {
+        "id": "var_破军一级TTK",
+        "kind": "variable",
+        "variableKind": "formula",
+        "role": "output",
+        "name": "破军一级TTK",
+        "label": "破军1级TTK",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_equip",
+        "position": {
+          "x": 40,
+          "y": 1650.0
+        },
+        "unit": "次",
+        "precision": 2,
+        "formula": "ceil(180/max(1,12+5-2))",
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_四木盾防御": {
+        "id": "var_四木盾防御",
+        "kind": "variable",
+        "variableKind": "formula",
+        "role": "intermediate",
+        "name": "四木盾防御",
+        "label": "4木盾防御",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_equip",
+        "position": {
+          "x": 40,
+          "y": -2838.0
+        },
+        "unit": "点",
+        "precision": 2,
+        "formula": "2+4",
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_四木盾TTK": {
+        "id": "var_四木盾TTK",
+        "kind": "variable",
+        "variableKind": "formula",
+        "role": "output",
+        "name": "四木盾TTK",
+        "label": "4木盾TTK",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_equip",
+        "position": {
+          "x": 340,
+          "y": -396.0
+        },
+        "unit": "次",
+        "precision": 2,
+        "formula": "ceil(180/max(1,12-四木盾防御))",
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_四不破壁垒防御": {
+        "id": "var_四不破壁垒防御",
+        "kind": "variable",
+        "variableKind": "formula",
+        "role": "intermediate",
+        "name": "四不破壁垒防御",
+        "label": "4不破壁垒防御",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_equip",
+        "position": {
+          "x": 40,
+          "y": -2970.0
+        },
+        "unit": "点",
+        "precision": 2,
+        "formula": "2+4*3",
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      },
+      "var_四不破壁垒TTK": {
+        "id": "var_四不破壁垒TTK",
+        "kind": "variable",
+        "variableKind": "formula",
+        "role": "output",
+        "name": "四不破壁垒TTK",
+        "label": "4不破壁垒TTK",
+        "description": "",
+        "tags": [],
+        "parentId": "grp_equip",
+        "position": {
+          "x": 340,
+          "y": -528.0
+        },
+        "unit": "次",
+        "precision": 2,
+        "formula": "ceil(180/max(1,12-四不破壁垒防御))",
+        "createdAt": 1764200000000,
+        "updatedAt": 1764200000000
+      }
+    },
+    "datasets": [],
+    "views": [],
+    "comparisons": [],
+    "tombstones": [],
+    "relations": [],
+    "bundles": [],
+    "createdAt": 1764200000000,
+    "updatedAt": 1764200000000
+  },
+  "viewState": {},
+  "comparisonRuns": []
+}

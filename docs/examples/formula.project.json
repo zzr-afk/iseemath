@@ -1,0 +1,120 @@
+{
+  "format": "numlab",
+  "schemaVersion": 1,
+  "appVersion": "0.1.0",
+  "exportedAt": 1730000000000,
+  "project": {
+    "schemaVersion": 1,
+    "id": "proj_damage_example",
+    "name": "伤害公式示例",
+    "nodes": {
+      "grp_combat": {
+        "id": "grp_combat",
+        "kind": "group",
+        "name": "战斗",
+        "label": "战斗",
+        "tags": [],
+        "parentId": null,
+        "position": { "x": 80, "y": 80 },
+        "createdAt": 1730000000000,
+        "updatedAt": 1730000000000
+      },
+      "var_attack": {
+        "id": "var_attack",
+        "kind": "variable",
+        "variableKind": "constant",
+        "role": "input",
+        "name": "攻击力",
+        "label": "攻击力",
+        "unit": "点",
+        "tags": [],
+        "parentId": "grp_combat",
+        "position": { "x": 80, "y": 240 },
+        "value": 100,
+        "createdAt": 1730000000000,
+        "updatedAt": 1730000000000
+      },
+      "var_skill": {
+        "id": "var_skill",
+        "kind": "variable",
+        "variableKind": "constant",
+        "role": "input",
+        "name": "技能倍率",
+        "label": "技能倍率",
+        "tags": [],
+        "parentId": "grp_combat",
+        "position": { "x": 320, "y": 240 },
+        "value": 2,
+        "createdAt": 1730000000000,
+        "updatedAt": 1730000000000
+      },
+      "var_defense": {
+        "id": "var_defense",
+        "kind": "variable",
+        "variableKind": "constant",
+        "role": "input",
+        "name": "防御力",
+        "label": "防御力",
+        "unit": "点",
+        "tags": [],
+        "parentId": "grp_combat",
+        "position": { "x": 560, "y": 240 },
+        "value": 30,
+        "createdAt": 1730000000000,
+        "updatedAt": 1730000000000
+      },
+      "var_damage": {
+        "id": "var_damage",
+        "kind": "variable",
+        "variableKind": "formula",
+        "role": "output",
+        "name": "伤害",
+        "label": "最终伤害",
+        "unit": "点",
+        "tags": ["核心"],
+        "parentId": "grp_combat",
+        "position": { "x": 320, "y": 420 },
+        "formula": "攻击力 * 技能倍率 - 防御力",
+        "createdAt": 1730000000000,
+        "updatedAt": 1730000000000
+      },
+      "var_balance": {
+        "id": "var_balance",
+        "kind": "variable",
+        "variableKind": "constant",
+        "role": "input",
+        "name": "版本平衡",
+        "label": "版本平衡",
+        "tags": [],
+        "parentId": null,
+        "position": { "x": 80, "y": 420 },
+        "value": 1,
+        "createdAt": 1730000000000,
+        "updatedAt": 1730000000000
+      }
+    },
+    "datasets": [],
+    "views": [],
+    "comparisons": [],
+    "tombstones": [],
+    "relations": [
+      {
+        "id": "rel_balance_damage",
+        "source": "var_balance",
+        "target": "var_damage",
+        "kind": "influence",
+        "label": "平衡调整影响伤害"
+      }
+    ],
+    "bundles": [
+      {
+        "id": "bundle_multipliers",
+        "name": "乘区",
+        "memberIds": ["var_attack", "var_skill"],
+        "summary": { "mode": "product" }
+      }
+    ],
+    "createdAt": 1730000000000,
+    "updatedAt": 1730000000000
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "format": "numlab",
+  "schemaVersion": 1,
+  "appVersion": "0.1.0",
+  "exportedAt": 1730000000000,
+  "project": {
+    "schemaVersion": 1,
+    "id": "proj_monster_example",
+    "name": "怪物批量表示例",
+    "description": "演示数据表节点、输入列映射与行作用域派生列。导入后数据集会被标记为不可用，需要替换数据源。",
+    "nodes": {
+      "var_multiplier": {
+        "id": "var_multiplier",
+        "kind": "variable",
+        "variableKind": "constant",
+        "role": "input",
+        "name": "伤害倍率",
+        "label": "全局伤害倍率",
+        "tags": ["全局"],
+        "parentId": null,
+        "position": { "x": 560, "y": 80 },
+        "value": 1.5,
+        "createdAt": 1730000000000,
+        "updatedAt": 1730000000000
+      },
+      "col_monster": {
+        "id": "col_monster",
+        "kind": "collection",
+        "name": "怪物表",
+        "label": "怪物数据表",
+        "tags": ["批量"],
+        "parentId": null,
+        "position": { "x": 120, "y": 240 },
+        "datasetId": "ds_monster",
+        "dataRevision": 1,
+        "fields": [
+          {
+            "id": "f_hp",
+            "name": "HP",
+            "label": "生命值",
+            "type": "number",
+            "role": "input",
+            "sourceColumnId": "c0:513ad2652efb3a88"
+          },
+          {
+            "id": "f_atk",
+            "name": "ATK",
+            "label": "攻击力",
+            "type": "number",
+            "role": "input",
+            "sourceColumnId": "c1:1261745941ef77f4"
+          },
+          {
+            "id": "f_def",
+            "name": "DEF",
+            "label": "防御力",
+            "type": "number",
+            "role": "input",
+            "sourceColumnId": "c2:c5597e8c08f4a68b"
+          },
+          {
+            "id": "f_server",
+            "name": "区服",
+            "label": "区服",
+            "type": "string",
+            "role": "input",
+            "sourceColumnId": "c3:1a438b209001b54f"
+          },
+          {
+            "id": "f_power",
+            "name": "Power",
+            "label": "战力",
+            "type": "number",
+            "role": "derived",
+            "formula": "HP * ATK / (DEF + 100) * 伤害倍率"
+          }
+        ],
+        "createdAt": 1730000000000,
+        "updatedAt": 1730000000000
+      }
+    },
+    "datasets": [
+      {
+        "id": "ds_monster",
+        "name": "怪物样例.csv",
+        "format": "csv",
+        "storage": "blob",
+        "blobKey": "proj_monster_example:demo-blob",
+        "encoding": "utf-8",
+        "delimiter": ",",
+        "hasHeader": true,
+        "timeZone": "Asia/Shanghai",
+        "parserVersion": "1.0.0",
+        "rawBytesHash": "demo-raw-bytes-hash",
+        "parseParamsHash": "demo-parse-params-hash",
+        "contentHash": "demo-content-hash",
+        "outputDigest": "demo-output-digest",
+        "columns": [
+          { "id": "c0:513ad2652efb3a88", "name": "HP", "type": "number", "sourceIndex": 0 },
+          { "id": "c1:1261745941ef77f4", "name": "ATK", "type": "number", "sourceIndex": 1 },
+          { "id": "c2:c5597e8c08f4a68b", "name": "DEF", "type": "number", "sourceIndex": 2 },
+          { "id": "c3:1a438b209001b54f", "name": "区服", "type": "string", "sourceIndex": 3 }
+        ],
+        "rowCount": 3,
+        "datasetHash": "demo-dataset-hash",
+        "createdAt": 1730000000000
+      }
+    ],
+    "views": [],
+    "comparisons": [],
+    "tombstones": [],
+    "relations": [],
+    "bundles": [],
+    "createdAt": 1730000000000,
+    "updatedAt": 1730000000000
+  }
+}

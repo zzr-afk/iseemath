@@ -1,0 +1,168 @@
+.node {
+  width: 200px;
+  min-height: 68px;
+  border-radius: 10px;
+  border: 1px solid #35618a;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 55%),
+    #16222f;
+  box-shadow: var(--shadow-node);
+  color: var(--text-primary);
+  padding: 8px 10px 7px;
+  position: relative;
+  transition:
+    border-color 120ms ease,
+    background 120ms ease;
+}
+
+.node:hover {
+  border-color: #4d7fb6;
+}
+
+/* Free inputs (no formula) read as the graph's sources: darker and dashed. */
+.sourceNode {
+  border-style: dashed;
+  border-color: #2c3f54;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.015), transparent 55%),
+    #0d151e;
+}
+
+.sourceNode:hover {
+  border-color: #3d5a75;
+}
+
+.selected {
+  border-color: var(--accent);
+  border-style: solid;
+  background:
+    linear-gradient(180deg, rgba(88, 196, 255, 0.08), transparent 60%),
+    var(--node-bg-selected);
+  box-shadow:
+    0 0 0 1px rgba(88, 196, 255, 0.5),
+    var(--shadow-node);
+}
+
+.errorNode {
+  border-color: var(--danger);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex: 0 0 auto;
+}
+
+.groupDot {
+  background: #9b7bff;
+}
+
+.title {
+  font-size: 12.5px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.symbol {
+  margin-left: auto;
+  font-size: 10px;
+  color: var(--text-muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  white-space: nowrap;
+}
+
+.value {
+  margin-top: 6px;
+  font-size: 17px;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+  color: #dff2ff;
+}
+
+.valueError {
+  color: var(--danger);
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.meta {
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.badge {
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  padding: 0 4px;
+  line-height: 15px;
+}
+
+.groupNode {
+  width: 190px;
+  min-height: 62px;
+  border-radius: 10px;
+  border: 1px solid #473a6b;
+  background:
+    linear-gradient(180deg, rgba(155, 123, 255, 0.06), transparent 60%),
+    #151327;
+  box-shadow: var(--shadow-node);
+  padding: 8px 10px;
+}
+
+.bundleNode {
+  width: 220px;
+  min-height: 70px;
+  border-radius: 12px;
+  border: 1px dashed #3f6f9e;
+  background: linear-gradient(160deg, rgba(29, 48, 71, 0.96), rgba(15, 23, 33, 0.96));
+  box-shadow: var(--shadow-node);
+  padding: 8px 10px;
+}
+
+.bundleDot {
+  background: #58c4ff;
+}
+
+.formulaHint {
+  margin-top: 7px;
+  font-size: 11px;
+  color: var(--text-secondary);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.handle {
+  width: 8px;
+  height: 8px;
+  border: 1.5px solid var(--bg-canvas);
+  background: var(--border-strong);
+}
+
+.handleDependency {
+  background: var(--dependency);
+}
+
+.handleInfluence {
+  background: var(--influence);
+}

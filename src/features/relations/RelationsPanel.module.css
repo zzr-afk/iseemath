@@ -1,0 +1,294 @@
+.panel {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.toolbar {
+  flex: 0 0 34px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 12px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.search {
+  width: 190px;
+}
+
+.counts {
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.hint {
+  color: var(--text-muted);
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.headerRow,
+.row {
+  display: grid;
+  grid-template-columns: minmax(120px, 0.85fr) minmax(240px, 2.2fr) 96px 28px;
+  column-gap: 12px;
+}
+
+.headerRow {
+  flex: 0 0 auto;
+  padding: 5px 16px 4px;
+  color: var(--text-muted);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.valueHeader {
+  text-align: right;
+}
+
+.list {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: 0 8px 8px;
+}
+
+.row {
+  position: relative;
+  align-items: start;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border-bottom: 1px solid rgba(38, 45, 59, 0.6);
+}
+
+.row:hover {
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.target {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+  padding-top: 3px;
+}
+
+.nameButton {
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--text-primary);
+  font-size: 12px;
+  font-weight: 550;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.nameButton:hover {
+  color: var(--accent);
+}
+
+.symbol {
+  color: var(--text-muted);
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.formulaCell {
+  min-width: 0;
+}
+
+.formulaEditor {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.localList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 4px 5px 6px 7px;
+  border-radius: 5px;
+  border: 1px dashed rgba(79, 157, 255, 0.28);
+  background: rgba(79, 157, 255, 0.05);
+}
+
+.localHint {
+  color: var(--text-muted);
+  font-size: 10px;
+  letter-spacing: 0.03em;
+}
+
+.localRow {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
+}
+
+.localName {
+  width: 62px;
+  min-width: 62px;
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 11px;
+}
+
+.localEquals {
+  color: var(--text-muted);
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 11px;
+}
+
+.localInput {
+  flex: 1;
+  min-width: 0;
+}
+
+.localValue {
+  min-width: 30px;
+  max-width: 92px;
+  overflow: hidden;
+  text-align: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--text-secondary);
+  font-size: 10.5px;
+  font-variant-numeric: tabular-nums;
+}
+
+.localRemove {
+  width: 20px;
+  min-width: 20px;
+  height: 20px;
+  color: var(--text-muted);
+}
+
+.localRemove:hover {
+  color: var(--danger);
+}
+
+.resultRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+  min-width: 0;
+}
+
+.resultLabel {
+  flex: 0 0 auto;
+  padding-top: 5px;
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+.resultInput {
+  flex: 1;
+  min-width: 0;
+}
+
+.addLocal {
+  width: 22px;
+  min-width: 22px;
+  height: 24px;
+  color: var(--text-muted);
+}
+
+.addLocal:hover {
+  color: var(--accent);
+}
+
+.constantCell {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding-top: 1px;
+}
+
+.sourceLine {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 3px;
+  color: var(--text-muted);
+  font-size: 10.5px;
+}
+
+.sourceChip {
+  padding: 0 5px;
+  border-radius: 4px;
+  background: rgba(79, 157, 255, 0.12);
+  color: #7fb4ff;
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 10.5px;
+}
+
+.valueCell {
+  padding-top: 4px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  overflow: hidden;
+}
+
+.value {
+  font-size: 13px;
+  color: var(--text-primary);
+}
+
+.valueError {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--danger);
+  font-size: 11px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 1px;
+}
+
+.empty {
+  padding: 22px 16px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.flash {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: 6px;
+  box-shadow: inset 0 0 0 1px var(--accent);
+  background: rgba(79, 157, 255, 0.1);
+  animation: flash 1.8s ease-out forwards;
+}
+
+@keyframes flash {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
